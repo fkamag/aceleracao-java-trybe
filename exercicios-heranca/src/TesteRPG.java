@@ -22,7 +22,30 @@ public class TesteRPG {
     System.out.println(cleric.getName() + " é da raça " + cleric.getRace() + " e utiliza "
         + cleric.getMagic());
 
+    warrior.move();
+    warrior.attack();
 
+    mage.move();
+    mage.attack();
+
+    cleric.move();
+    cleric.attack();
+
+    moveAndAttack(warrior);
+    moveAndAttack(cleric);
+
+    Barbarian barbarian = new Barbarian();
+    barbarian.setName("Grush");
+    barbarian.move();
+
+    cleric.heal();
+    cleric.heal("Poção de Vida");
+    cleric.heal("Feitiço de Luz", 7);
+  }
+
+  public static void moveAndAttack(PlayableCharacter player) {
+    player.move();
+    player.attack();
   }
 
 }
