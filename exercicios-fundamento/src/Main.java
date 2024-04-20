@@ -1,5 +1,4 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
 
 public class Main {
 
@@ -49,17 +48,31 @@ public class Main {
 //    System.out.println(estudantes);
 //    estudantes.add("Fábio");  //não pode mudar estudantes pois Set é imutável
 
-    HashSet<String> estudantes = new HashSet<>();
-    boolean adicionouJoao = estudantes.add("João");
-    boolean adicionouJoaoDeNovo = estudantes.add("João");
-    boolean adicionouMaria = estudantes.add("Maria");
-    System.out.printf("adicionouJoao: %b%n",adicionouJoao);
-    System.out.printf("adicionouJoaoDeNovo: %b%n",adicionouJoaoDeNovo);
-    System.out.printf("adicionouMaria: %b%n",adicionouMaria);
-    System.out.println(estudantes);
-    estudantes.remove("João");
+//    HashSet<String> estudantes = new HashSet<>();
+//    boolean adicionouJoao = estudantes.add("João");
+//    boolean adicionouJoaoDeNovo = estudantes.add("João");
+//    boolean adicionouMaria = estudantes.add("Maria");
+//    System.out.printf("adicionouJoao: %b%n",adicionouJoao);
+//    System.out.printf("adicionouJoaoDeNovo: %b%n",adicionouJoaoDeNovo);
+//    System.out.printf("adicionouMaria: %b%n",adicionouMaria);
+//    System.out.println(estudantes);
+//    estudantes.remove("João");
+//    System.out.println(estudantes.size());
+//    System.out.println(estudantes.contains("Maria"));
+
+    HashMap<String, String> estudantes = new HashMap<String, String>();
+    estudantes.put("x038702","João");
+    estudantes.put("x784244","Maria");
+    estudantes.put("x105852","Joana");
+    System.out.println("Estudantes: "+estudantes);
+    String valorAnterior = estudantes.put("x038702","José"); // Mesma matricula usada no mapeamento com João
+    System.out.println("Valor anterior de x038702: "+valorAnterior);
+    System.out.println("Estudantes: "+estudantes);
+    System.out.println(estudantes.get("x105852"));
+    estudantes.remove("x038702");
+    System.out.println("Estudantes: "+estudantes);
     System.out.println(estudantes.size());
-    System.out.println(estudantes.contains("Maria"));
+
 
   }
 
