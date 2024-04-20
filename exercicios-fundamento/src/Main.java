@@ -78,33 +78,67 @@ public class Main {
 //    System.out.println("Estudantes: "+estudantes);
 //    System.out.println(estudantes.size());
 
-    Collection<Estudante> estudantes = CodeExamples.obterEntrada();
-    List<String> matriculas = estudantes.stream()
-        .filter(e -> "Computação".equals(e.getCursso()))
-        .sorted(Comparator.comparing(Estudante::getNome))
-        .map(Estudante::getMatricula)
-        .toList();
-    System.out.println(matriculas);
+//    Collection<Estudante> estudantes = CodeExamples.obterEntrada();
+//    List<String> matriculas = estudantes.stream()
+//        .filter(e -> "Computação".equals(e.getCursso()))
+//        .sorted(Comparator.comparing(Estudante::getNome))
+//        .map(Estudante::getMatricula)
+//        .toList();
+//    System.out.println(matriculas);
+//
+//    Collection<String> nomes = List.of("João", "Maria", "João", "José", "José", "Joana");
+//    long pessoasDistintas = nomes.stream()
+//        .distinct()
+//        .count();
+//    System.out.println(pessoasDistintas);
+//
+//    Estudante estudanteMario = estudantes.stream()
+//        .filter(e -> "Bernardo".equals(e.getNome()))
+//        .findAny()
+//        .orElse(null);
+//
+//    System.out.println(estudanteMario.getMatricula() + " " + estudanteMario.getNome());
+//
+//    Collection<String> numeros = Stream.of("um","dois","três","quatro")
+//        .filter(e -> e.length()>3)
+//        .toList();
+//
+//    System.out.println(numeros);
 
-    Collection<String> nomes = List.of("João", "Maria", "João", "José", "José", "Joana");
-    long pessoasDistintas = nomes.stream()
-        .distinct()
-        .count();
-    System.out.println(pessoasDistintas);
+    // Praticar
 
-    Estudante estudanteMario = estudantes.stream()
-        .filter(e -> "Bernardo".equals(e.getNome()))
-        .findAny()
-        .orElse(null);
-
-    System.out.println(estudanteMario.getMatricula() + " " + estudanteMario.getNome());
-
-    Collection<String> numeros = Stream.of("um","dois","três","quatro")
-        .filter(e -> e.length()>3)
-        .toList();
-
+    // Exercício 1
+    List<Integer> numeros = List.of(7, 4, 5, 6, 9, 8, 2);
     System.out.println(numeros);
+    List<Integer> pares = numeros.stream()
+        .filter(e -> e % 2 == 0)
+        .toList();
+    System.out.println(pares);
 
+    //Exercício 2
+    List<String> nomes = List.of("fabio", "jose", "maria");
+    System.out.println(nomes);
+    List<String> nomesMaiuscula = nomes.stream()
+        .map(String::toUpperCase)
+        .toList();
+    System.out.println(nomesMaiuscula);
+
+    //Exercício 3
+    Integer soma = numeros.stream()
+        .mapToInt(e -> e)
+        .sum();
+    System.out.println(soma);
+
+    //Exercício 4
+    List<String> result = stringsMaioresQueX(nomes, 4);
+    System.out.println(result);
+
+  }
+
+  public static List<String> stringsMaioresQueX(List<String> palavras, int x) {
+    return palavras.stream()
+        .filter(e -> e.length() > x)
+        .toList();
   }
 
 }
