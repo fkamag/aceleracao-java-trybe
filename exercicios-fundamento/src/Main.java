@@ -1,4 +1,9 @@
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
 
@@ -60,21 +65,46 @@ public class Main {
 //    System.out.println(estudantes.size());
 //    System.out.println(estudantes.contains("Maria"));
 
-    HashMap<String, String> estudantes = new HashMap<String, String>();
-    estudantes.put("x038702","João");
-    estudantes.put("x784244","Maria");
-    estudantes.put("x105852","Joana");
-    System.out.println("Estudantes: "+estudantes);
-    String valorAnterior = estudantes.put("x038702","José"); // Mesma matricula usada no mapeamento com João
-    System.out.println("Valor anterior de x038702: "+valorAnterior);
-    System.out.println("Estudantes: "+estudantes);
-    System.out.println(estudantes.get("x105852"));
-    estudantes.remove("x038702");
-    System.out.println("Estudantes: "+estudantes);
-    System.out.println(estudantes.size());
+//    HashMap<String, String> estudantes = new HashMap<String, String>();
+//    estudantes.put("x038702","João");
+//    estudantes.put("x784244","Maria");
+//    estudantes.put("x105852","Joana");
+//    System.out.println("Estudantes: "+estudantes);
+//    String valorAnterior = estudantes.put("x038702","José"); // Mesma matricula usada no mapeamento com João
+//    System.out.println("Valor anterior de x038702: "+valorAnterior);
+//    System.out.println("Estudantes: "+estudantes);
+//    System.out.println(estudantes.get("x105852"));
+//    estudantes.remove("x038702");
+//    System.out.println("Estudantes: "+estudantes);
+//    System.out.println(estudantes.size());
 
+    Collection<Estudante> estudantes = CodeExamples.obterEntrada();
+    List<String> matriculas = estudantes.stream()
+        .filter(e -> "Computação".equals(e.getCursso()))
+        .sorted(Comparator.comparing(Estudante::getNome))
+        .map(Estudante::getMatricula)
+        .toList();
+    System.out.println(matriculas);
+
+    Collection<String> nomes = List.of("João", "Maria", "João", "José", "José", "Joana");
+    long pessoasDistintas = nomes.stream()
+        .distinct()
+        .count();
+    System.out.println(pessoasDistintas);
+
+    Estudante estudanteMario = estudantes.stream()
+        .filter(e -> "Bernardo".equals(e.getNome()))
+        .findAny()
+        .orElse(null);
+
+    System.out.println(estudanteMario.getMatricula() + " " + estudanteMario.getNome());
+
+    Collection<String> numeros = Stream.of("um","dois","três","quatro")
+        .filter(e -> e.length()>3)
+        .toList();
+
+    System.out.println(numeros);
 
   }
 
 }
-
